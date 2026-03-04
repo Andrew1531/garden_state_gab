@@ -32,13 +32,27 @@
             background: rgba(255, 255, 255, 0.8);
             border-bottom: 0.5px solid rgba(0,0,0,0.05);
         }
+        
+        /* Hero Slider & Animation */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            z-index: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .hero-slide.active {
+            opacity: 0.6; /* Increased opacity slightly for better visibility */
+            z-index: 1;
+        }
         .hero-zoom {
             animation: slowZoom 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
         }
         @keyframes slowZoom {
             from { transform: scale(1); }
-            to { transform: scale(1.15); }
+            to { transform: scale(1.1); }
         }
+
         .text-reveal {
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
         }
@@ -49,10 +63,9 @@
         .active .reveal-item {
             transform: translateY(0);
         }
-        /* 2026 Spacing */
+        
         .section-padding { padding-top: clamp(6rem, 15vw, 15rem); padding-bottom: clamp(6rem, 15vw, 15rem); }
         
-        /* Agent Card Styling */
         .agent-card {
             background: #ffffff;
             border: 1px solid rgba(0,0,0,0.05);
@@ -63,7 +76,6 @@
             box-shadow: 0 40px 80px -20px rgba(0,0,0,0.1);
         }
 
-        /* Image Placeholder Styling */
         .img-placeholder {
             background-color: #f0f0f0;
             display: flex;
@@ -76,7 +88,6 @@
             border: 1px dashed #ddd;
         }
 
-        /* Privacy Modal Styles */
         #privacy-modal {
             backdrop-filter: blur(15px);
             background: rgba(10, 10, 10, 0.95);
@@ -140,30 +151,29 @@
             <h2 class="serif text-4xl md:text-5xl mb-8">Privacy Policy</h2>
             <div class="space-y-6 text-sm font-light leading-relaxed text-gray-600">
                 <p class="uppercase tracking-widest text-[10px] text-black font-bold">Data Commitment</p>
-                <p>
-                    GardenStateGab is committed to the absolute security and integrity of your personal information. We maintain a strict policy against the sale of user data to third parties.
-                </p>
-                <p>
-                    The information collected through this site is used exclusively for internal marketing communication purposes. This includes the delivery of curated property portfolios, market insights, and brokerage updates relevant to your search.
-                </p>
-                <p>
-                    By interacting with this site, you acknowledge that your data facilitates a bespoke real estate experience. You may opt-out of marketing communications at any time.
-                </p>
+                <p>GardenStateGab is committed to the absolute security and integrity of your personal information. We maintain a strict policy against the sale of user data to third parties.</p>
+                <p>The information collected through this site is used exclusively for internal marketing communication purposes. This includes the delivery of curated property portfolios, market insights, and brokerage updates relevant to your search.</p>
+                <p>By interacting with this site, you acknowledge that your data facilitates a bespoke real estate experience.</p>
             </div>
         </div>
     </div>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="relative h-[110vh] w-full bg-black overflow-hidden">
+        <!-- Image Container -->
         <div class="absolute inset-0 z-0 hero-zoom">
-            <!-- PLACEHOLDER FOR HERO IMAGE -->
-            <div class="w-full h-full img-placeholder opacity-40">
-                Upload Hero Image (2400x1600px)
+            <div class="hero-slide active">
+                <img src="390500e4c44ccfe67ee0f5a1fcfd1f02-cc_ft_1536.webp" class="w-full h-full object-cover" alt="Skyline View">
             </div>
-            <!-- To use your image, replace the div above with: 
-            <img src="YOUR_IMAGE_URL" class="w-full h-full object-cover opacity-60" alt="Estate"> 
-            -->
+            <div class="hero-slide">
+                <img src="5e27c07fc42c8672ceb3365f153bc3f1-cc_ft_768.webp" class="w-full h-full object-cover" alt="Modern Kitchen">
+            </div>
+            <div class="hero-slide">
+                <img src="e97afa071bbbde296fe6d2848ba88f87-cc_ft_1536.webp" class="w-full h-full object-cover" alt="Luxe Living Space">
+            </div>
         </div>
+        
+        <!-- Overlay Content -->
         <div class="relative z-10 h-full flex flex-col justify-end p-6 md:p-16 pb-24 text-white">
             <div class="max-w-[1400px] w-full mx-auto">
                 <div class="text-reveal">
@@ -184,12 +194,10 @@
         </div>
     </section>
 
-    <!-- Clean Agent & Listing Section -->
+    <!-- Agent Section -->
     <section id="zillow-section" class="section-padding bg-[#fcfcfc] px-6 md:px-16">
         <div class="max-w-[1400px] mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                
-                <!-- Left: Narrative -->
                 <div class="lg:col-span-5">
                     <span class="text-[10px] uppercase tracking-[0.5em] text-gray-400 block mb-6">Founding Perspective</span>
                     <h2 class="serif text-5xl md:text-7xl mb-8 leading-[1.1]">Verified <br><span class="italic text-gray-400">Excellence.</span></h2>
@@ -201,17 +209,10 @@
                     </a>
                 </div>
 
-                <!-- Right: Profile Card -->
                 <div class="lg:col-start-7 lg:col-span-6">
-                    <a href="https://www.zillow.com/profile/gabriellebasulto" target="_blank" class="block agent-card p-1">
+                    <div class="agent-card p-1">
                         <div class="relative overflow-hidden aspect-video mb-8">
-                            <!-- PLACEHOLDER FOR FEATURED LISTING -->
-                            <div class="w-full h-full img-placeholder">
-                                Featured Listing Image (1200x800px)
-                            </div>
-                            <!-- To use your image, replace the div above with:
-                            <img src="YOUR_LISTING_URL" class="w-full h-full object-cover grayscale opacity-80" alt="Active Listing">
-                            -->
+                            <img src="390500e4c44ccfe67ee0f5a1fcfd1f02-cc_ft_1536.webp" class="w-full h-full object-cover grayscale opacity-80" alt="Active Listing">
                             <div class="absolute bottom-6 left-6 text-white">
                                 <span class="text-[8px] uppercase tracking-widest bg-black/50 backdrop-blur-md px-3 py-1">Featured Active Listing</span>
                             </div>
@@ -224,11 +225,7 @@
                                 </div>
                                 <div class="text-right">
                                     <div class="flex gap-1 mb-2">
-                                        <span class="w-2 h-2 rounded-full bg-black"></span>
-                                        <span class="w-2 h-2 rounded-full bg-black"></span>
-                                        <span class="w-2 h-2 rounded-full bg-black"></span>
-                                        <span class="w-2 h-2 rounded-full bg-black"></span>
-                                        <span class="w-2 h-2 rounded-full bg-black"></span>
+                                        <span class="w-2 h-2 rounded-full bg-black"></span><span class="w-2 h-2 rounded-full bg-black"></span><span class="w-2 h-2 rounded-full bg-black"></span><span class="w-2 h-2 rounded-full bg-black"></span><span class="w-2 h-2 rounded-full bg-black"></span>
                                     </div>
                                     <p class="text-[9px] uppercase tracking-widest font-semibold">5.0 Star Rating</p>
                                 </div>
@@ -239,14 +236,13 @@
                                     <p class="text-[10px] uppercase tracking-widest font-medium">Top Producer 2024</p>
                                 </div>
                                 <div class="text-right">
-                                    <span class="text-[8px] uppercase tracking-widest text-gray-400 block mb-1">Action</span>
-                                    <p class="text-[10px] uppercase tracking-widest font-medium">Click to View Sales</p>
+                                    <span class="text-[8px] uppercase tracking-widest text-gray-400 block mb-1">Portfolio</span>
+                                    <p class="text-[10px] uppercase tracking-widest font-medium">Verified Sales</p>
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -254,120 +250,78 @@
     <!-- Footer -->
     <footer class="bg-[#0a0a0a] text-white pt-24 pb-12 px-6 md:px-16">
         <div class="max-w-[2000px] mx-auto">
-            
-            <!-- IDX & Extended Navigation -->
             <div class="flex flex-col gap-12 mb-20">
                 <div class="flex flex-col md:flex-row justify-between items-start gap-8 border-b border-white/5 pb-12 mb-12">
                     <div class="flex flex-wrap gap-8 md:gap-12 text-[9px] uppercase tracking-[0.4em] font-light text-white/60">
                         <a href="#" class="hover:text-white transition-all">Home Page</a>
                         <a href="#" class="hover:text-white transition-all">Contact Us</a>
-                        <a href="#" class="hover:text-white transition-all">Site Map</a>
-                        <a href="https://www.zillow.com/profile/gabriellebasulto" target="_blank" class="hover:text-white transition-all">External Zillow Link</a>
+                        <a href="https://www.zillow.com/profile/gabriellebasulto" target="_blank" class="hover:text-white transition-all">Zillow Archive</a>
                     </div>
                     <div class="flex gap-8 text-[9px] uppercase tracking-[0.4em] font-light text-white/60">
                         <a href="#" class="hover:text-white transition-all">Instagram</a>
                         <a href="#" class="hover:text-white transition-all">LinkedIn</a>
                     </div>
                 </div>
-                
-                <div class="max-w-4xl space-y-6">
+                <div class="max-w-4xl space-y-4">
                     <p class="text-[9px] uppercase tracking-[0.2em] text-white/40 leading-relaxed">
-                        ©1997-2026 <a href="javascript:void(0)" class="open-privacy hover:text-white transition-all">Privacy Policy</a>, Terms of Use, Accessibility Statement.
-                    </p>
-                    <p class="text-[10px] text-white/40 leading-relaxed font-light">
-                        The data relating to real estate for sale on this website comes in part from the IDX Program of Garden State Multiple Listing Service, L.L.C. Real estate listings held by other brokerage firms are marked as IDX Listing. 
-                        Copyright © 2026 Garden State Multiple Listing Service, L.L.C. All rights reserved. 
-                        This content last updated on 03/03/2026 05:00 PM.
+                        ©1997-2026 <a href="javascript:void(0)" class="open-privacy hover:text-white transition-all underline">Privacy Policy</a>
                     </p>
                 </div>
             </div>
-
             <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-white/10 text-[8px] uppercase tracking-[0.5em] text-white/30">
                 <p>© 2026 GARDENSTATEGAB. ALL RIGHTS RESERVED.</p>
-                <div class="flex gap-12 mt-6 md:mt-0">
-                    <a href="javascript:void(0)" class="open-privacy hover:text-white transition-all">Privacy</a>
-                    <a href="#" class="hover:text-white transition-all">Terms</a>
-                    <a href="https://ladmedia.co" class="hover:text-white transition-all">LAD MEDIA</a>
-                </div>
+                <p>DESIGNED BY LAD MEDIA</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Hero Slider Initialization
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        
+        function updateSlider() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+            currentSlide = (currentSlide + 1) % slides.length;
+        }
+
+        // Run immediately then every 2s
+        updateSlider();
+        setInterval(updateSlider, 2000);
+
+        // UI Scroll Logic
         const navbar = document.getElementById('navbar');
         const logoText = document.getElementById('logo-text');
-        const logoSub = document.getElementById('logo-sub');
-        const navLinks = document.getElementById('nav-links');
         const menuToggle = document.getElementById('menu-toggle');
 
-        // Text reveal trigger
         window.addEventListener('load', () => {
             document.querySelector('.text-reveal').classList.add('active');
         });
 
-        // Scroll Logic
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
+            if (window.scrollY > 50) {
                 navbar.classList.add('nav-blur');
-                navbar.classList.replace('py-8', 'py-4');
                 logoText.classList.replace('text-white', 'text-black');
-                logoSub.classList.replace('text-white/50', 'text-black/30');
-                navLinks.classList.replace('text-white', 'text-black');
                 menuToggle.classList.replace('text-white', 'text-black');
             } else {
                 navbar.classList.remove('nav-blur');
-                navbar.classList.replace('py-4', 'py-8');
                 logoText.classList.replace('text-black', 'text-white');
-                logoSub.classList.replace('text-black/30', 'text-white/50');
-                navLinks.classList.replace('text-black', 'text-white');
                 menuToggle.classList.replace('text-black', 'text-white');
             }
         });
 
-        // Menu Logic
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuClose = document.getElementById('menu-close');
-        const menuLinks = document.querySelectorAll('.menu-link');
-
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
-            mobileMenu.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        });
-
-        const closeMenu = () => {
-            mobileMenu.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        };
-
-        menuClose.addEventListener('click', closeMenu);
-        menuLinks.forEach(link => link.addEventListener('click', closeMenu));
-
-        // Privacy Modal Logic
+        // Simple Privacy Modal Trigger
         const privacyModal = document.getElementById('privacy-modal');
-        const openPrivacyBtns = document.querySelectorAll('.open-privacy');
-        const closePrivacyBtn = document.getElementById('close-privacy');
-
-        openPrivacyBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                privacyModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
+        document.querySelectorAll('.open-privacy').forEach(btn => {
+            btn.onclick = () => privacyModal.classList.add('active');
         });
-
-        closePrivacyBtn.addEventListener('click', () => {
-            privacyModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        // Close modal on background click
-        privacyModal.addEventListener('click', (e) => {
-            if (e.target === privacyModal) {
-                privacyModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
+        document.getElementById('close-privacy').onclick = () => privacyModal.classList.remove('active');
     </script>
 </body>
 </html>
