@@ -3,299 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GARDENSTATEGAB // 2026</title>
+    <title>Gabrielle Basulto | GardenStateGab Real Estate</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&family=Roboto:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #ffffff;
-            --fg: #0a0a0a;
+            --gsg-magenta: #ff00ff;
+            --gsg-black: #000000;
+            --gsg-white: #ffffff;
+            --gsg-gray: #1a1a1a;
         }
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--fg);
-            background-color: var(--bg);
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
+            color: var(--gsg-black);
+            background-color: var(--gsg-white);
+            line-height: 1.6;
         }
-        .serif { font-family: 'Cormorant Garamond', serif; }
+        .oswald { font-family: 'Oswald', sans-serif; }
+        .serif { font-family: 'Playfair Display', serif; }
         
-        .brand-font {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 300;
-            letter-spacing: -0.02em;
+        .magenta-glow:hover {
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
         }
 
-        /* Nav Transition */
-        .nav-blur {
-            backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.9);
-            padding-top: 1.5rem !important;
-            padding-bottom: 1.5rem !important;
-            border-bottom: 0.5px solid rgba(0,0,0,0.1);
-        }
-
-        /* Hero Slider Logic */
-        .hero-container {
-            position: relative;
-            height: 100vh;
+        .lead-input {
+            background: transparent;
+            border: 2px solid var(--gsg-black);
+            padding: 16px;
             width: 100%;
-            background: #000;
-            overflow: hidden;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+        }
+        .lead-input:focus {
+            border-color: var(--gsg-magenta);
+            outline: none;
         }
 
-        .slide {
-            position: absolute;
+        .btn-magenta {
+            background-color: var(--gsg-magenta);
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 18px;
+            width: 100%;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-magenta:hover {
+            background-color: var(--gsg-black);
+            transform: translateY(-2px);
+        }
+
+        #privacy-modal {
+            display: none;
+            position: fixed;
             inset: 0;
-            opacity: 0;
-            transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
+        #privacy-modal.active { display: flex; }
 
-        .slide.active {
-            opacity: 1;
-            z-index: 2;
-        }
-
-        .slide img {
+        .agent-image-container::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -20px;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transform: scale(1.1);
-            transition: transform 10s linear;
+            border: 2px solid var(--gsg-magenta);
+            z-index: -1;
         }
 
-        .slide.active img {
-            transform: scale(1);
-        }
-
-        /* Text Animations */
-        .text-reveal-box {
-            overflow: hidden;
-            display: block;
-        }
-        
-        .text-reveal-item {
-            transform: translateY(100%);
-            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .loaded .text-reveal-item {
-            transform: translateY(0);
-        }
-
-        .agent-card {
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .agent-card:hover {
-            transform: translateY(-8px);
-        }
-
-        /* Mobile Menu */
-        #mobile-menu.active {
-            display: flex;
+        .floating-contact {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
         }
     </style>
 </head>
-<body class="selection:bg-black selection:text-white">
+<body>
 
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-700 py-10 px-6 md:px-16">
-        <div class="max-w-[2000px] mx-auto flex justify-between items-center">
+    <!-- Header -->
+    <header class="bg-black text-white py-6 px-6 md:px-12 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex flex-col">
-                <span id="logo-text" class="brand-font text-3xl md:text-4xl leading-none text-white transition-colors duration-500">GardenStateGab</span>
-                <span id="logo-sub" class="text-[7px] uppercase tracking-[0.8em] mt-1 text-white/50 transition-colors duration-500">New Jersey // Collective</span>
+                <h1 class="oswald text-2xl md:text-3xl font-bold tracking-tighter leading-none">GABRIELLE BASULTO</h1>
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[var(--gsg-magenta)] font-bold">GardenStateGab Collective</span>
             </div>
-
-            <div id="nav-links" class="hidden xl:flex space-x-10 text-[9px] uppercase tracking-[0.4em] font-light text-white items-center">
-                <a href="#about" class="hover:opacity-50 transition-all">About Us</a>
-                <a href="#archive" class="hover:opacity-50 transition-all">Archive</a>
-                <a href="#" class="hover:opacity-50 transition-all">Sellers</a>
-                <a href="#" class="hover:opacity-50 transition-all">Buyers</a>
-                <div class="w-px h-4 bg-white/20"></div>
-                <a href="tel:9732062128" class="font-normal tracking-widest hover:italic transition-all">(973) 206-2128</a>
-            </div>
-
-            <button class="text-white transition-colors duration-500 flex items-center" id="menu-btn">
-                <span class="text-[9px] uppercase tracking-widest font-light mr-4 hidden md:inline-block">Menu</span>
-                <div class="w-6 h-[1px] bg-current"></div>
-            </button>
+            
+            <nav class="hidden lg:flex gap-10 items-center">
+                <a href="#about" class="oswald text-xs tracking-widest hover:text-[var(--gsg-magenta)] transition-colors">THE AGENT</a>
+                <a href="#form" class="oswald text-xs tracking-widest hover:text-[var(--gsg-magenta)] transition-colors">SELLERS</a>
+                <a href="#form" class="oswald text-xs tracking-widest hover:text-[var(--gsg-magenta)] transition-colors">BUYERS</a>
+                <a href="tel:9732062128" class="bg-[var(--gsg-magenta)] px-6 py-2 oswald text-xs font-bold tracking-widest hover:bg-white hover:text-black transition-all">973.206.2128</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Fullscreen Menu (Hidden by default) -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] hidden flex-col p-12 md:p-24 transition-all duration-700">
-        <div class="flex justify-between items-start mb-24">
-            <span class="brand-font text-4xl">GSG</span>
-            <button id="menu-close" class="text-[10px] uppercase tracking-widest border-b border-black">Close</button>
-        </div>
-        <div class="flex flex-col space-y-4">
-            <a href="#about" class="serif text-6xl md:text-8xl hover:italic transition-all duration-500">About Us</a>
-            <a href="#archive" class="serif text-6xl md:text-8xl hover:italic transition-all duration-500">Archive</a>
-            <a href="#" class="serif text-6xl md:text-8xl hover:italic transition-all duration-500">Sellers</a>
-            <a href="#" class="serif text-6xl md:text-8xl hover:italic transition-all duration-500">Buyers</a>
-        </div>
-    </div>
-
-    <!-- Hero Section -->
-    <section class="hero-container" id="hero">
-        <!-- Slides -->
-        <div class="slide active">
-            <img src="assets/skyline.webp" alt="Skyline">
-        </div>
-        <div class="slide">
-            <img src="assets/kitchen.webp" alt="Kitchen">
-        </div>
-        <div class="slide">
-            <img src="assets/livingspace.webp" alt="Living Space">
-        </div>
-
-        <!-- Overlays -->
-        <div class="absolute inset-0 z-10 bg-black/20"></div>
-        <div class="absolute inset-0 z-20 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
-
-        <!-- Hero Content -->
-        <div class="relative z-30 h-full flex flex-col justify-end p-6 md:p-16 pb-24 text-white">
-            <div class="max-w-[1400px] w-full mx-auto">
-                <div class="text-reveal-box">
-                    <h1 class="serif text-7xl md:text-[11vw] leading-[0.85] mb-8 text-reveal-item">
-                        Atmospheric <br>Real Estate.
-                    </h1>
-                </div>
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 overflow-hidden">
-                    <p class="text-[10px] uppercase tracking-[0.6em] font-light max-w-xs leading-relaxed opacity-80 text-reveal-item" style="transition-delay: 0.2s;">
-                        Redefining the New Jersey architectural landscape through curated visual narratives.
+    <!-- Hero / Lead Capture -->
+    <section class="relative min-h-[90vh] flex items-center pt-12 pb-24 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            <!-- Left: High Impact Branding -->
+            <div class="lg:col-span-7">
+                <span class="oswald text-[var(--gsg-magenta)] font-bold tracking-[0.3em] uppercase mb-4 block">New Jersey Real Estate Expert</span>
+                <h2 class="serif text-6xl md:text-8xl mb-8 leading-[0.9] text-black">
+                    Your Vision. <br>
+                    <span class="italic text-gray-300">My Mission.</span>
+                </h2>
+                <div class="max-w-xl mb-12">
+                    <p class="text-xl text-gray-600 font-light leading-relaxed">
+                        Redefining the New Jersey real estate experience through elite marketing, local dominance, and a commitment to the <span class="font-bold text-black border-b-2 border-[var(--gsg-magenta)]">Gold Standard.</span>
                     </p>
-                    <div class="text-[10px] uppercase tracking-[0.4em] opacity-40 text-reveal-item" style="transition-delay: 0.4s;">
-                        01 — 2026 Collection
+                </div>
+                
+                <!-- Agent Stat Row -->
+                <div class="flex gap-12 border-t-2 border-black pt-8">
+                    <div>
+                        <p class="oswald text-3xl font-bold uppercase">5.0</p>
+                        <p class="text-[10px] uppercase tracking-widest font-bold text-gray-400">Zillow Rating</p>
                     </div>
+                    <div>
+                        <p class="oswald text-3xl font-bold uppercase">2026</p>
+                        <p class="text-[10px] uppercase tracking-widest font-bold text-gray-400">Collection</p>
+                    </div>
+                    <div>
+                        <p class="oswald text-3xl font-bold uppercase">NJ</p>
+                        <p class="text-[10px] uppercase tracking-widest font-bold text-gray-400">Market Leader</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: The Registration Portal -->
+            <div id="form" class="lg:col-span-5">
+                <div class="bg-black text-white p-8 md:p-12 relative shadow-2xl">
+                    <div class="absolute -top-4 -right-4 bg-[var(--gsg-magenta)] text-white oswald p-4 text-xs font-bold tracking-widest">
+                        SECURE PORTAL
+                    </div>
+                    <h3 class="oswald text-3xl font-bold mb-8 uppercase tracking-tight">Client Registration</h3>
+                    <form onsubmit="event.preventDefault();" class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest font-bold text-gray-500">Full Name</label>
+                        <input type="text" class="lead-input !border-white text-white focus:!border-[var(--gsg-magenta)]" placeholder="REQUIRED" required>
+                        
+                        <label class="text-[10px] uppercase tracking-widest font-bold text-gray-500">Phone Number</label>
+                        <input type="tel" class="lead-input !border-white text-white focus:!border-[var(--gsg-magenta)]" placeholder="REQUIRED" required>
+                        
+                        <div class="py-6">
+                            <label class="flex items-start gap-4 cursor-pointer group">
+                                <input type="checkbox" class="mt-1 accent-[var(--gsg-magenta)] w-5 h-5" required>
+                                <span class="text-[10px] uppercase tracking-widest leading-relaxed text-gray-400 font-bold group-hover:text-white transition-colors">
+                                    I AGREE TO THE <button type="button" onclick="togglePrivacy()" class="text-[var(--gsg-magenta)] underline">PRIVACY TERMS</button> AND GIVE PERMISSION TO BE CONTACTED BY GABRIELLE BASULTO FOR MARKETING.
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn-magenta">Register & Consult</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About / Archive Section -->
-    <section id="archive" class="py-32 px-6 md:px-16 bg-[#fafafa]">
-        <div class="max-w-[1400px] mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
-                <div class="lg:col-span-5">
-                    <span class="text-[10px] uppercase tracking-[0.5em] text-gray-400 block mb-6">Verified Results</span>
-                    <h2 class="serif text-5xl md:text-7xl mb-8 leading-[1.1]">The Zillow <br><span class="italic text-gray-400">Archive.</span></h2>
-                    <p class="text-sm font-light text-gray-500 leading-relaxed mb-12 max-w-md">
-                        Data-driven strategy meets high-design execution. Gabrielle Basulto delivers a specialized brokerage experience focused on the North Jersey corridor.
-                    </p>
-                    <a href="https://www.zillow.com/profile/gabriellebasulto" target="_blank" class="inline-flex items-center gap-4 group">
-                        <span class="text-[10px] uppercase tracking-[0.4em] border-b border-black pb-1 group-hover:italic transition-all">Explore Active Portfolio</span>
-                    </a>
+    <!-- Property Visual Divider (Updated with skyline.webp) -->
+    <section class="px-6 md:px-12 pb-24">
+        <div class="max-w-7xl mx-auto relative">
+            <div class="aspect-[21/9] overflow-hidden border-2 border-black group">
+                <img src="skyline.webp" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="New Jersey Skyline Portfolio">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all"></div>
+                <div class="absolute bottom-10 left-10 text-white">
+                    <p class="oswald text-4xl font-bold tracking-tighter">FEATURED ARCHIVE</p>
+                    <p class="text-xs uppercase tracking-[0.5em] text-[var(--gsg-magenta)] font-bold">GardenStateGab // 2026</p>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="lg:col-start-7 lg:col-span-6">
-                    <div class="agent-card bg-white p-2 shadow-sm border border-gray-100">
-                        <div class="aspect-[4/3] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000">
-                            <img src="assets/skyline.webp" class="w-full h-full object-cover" alt="Portfolio Image">
-                        </div>
-                        <div class="p-8">
-                            <div class="flex justify-between items-center mb-6">
-                                <h3 class="serif text-3xl">Gabrielle Basulto</h3>
-                                <div class="flex gap-1">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black"></div>
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black"></div>
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black"></div>
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black"></div>
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black"></div>
-                                </div>
-                            </div>
-                            <div class="flex justify-between text-[9px] uppercase tracking-widest text-gray-400 border-t pt-6">
-                                <span>NJ Licensed Broker</span>
-                                <span>5.0 Star Professional</span>
-                            </div>
-                        </div>
+    <!-- Portfolio / Social Proof -->
+    <section id="about" class="bg-gray-50 py-24 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            
+            <div class="order-2 lg:order-1 relative">
+                <div class="agent-image-container relative">
+                    <img src="390500e4c44ccfe67ee0f5a1fcfd1f02-cc_ft_1536.webp" class="w-full aspect-square object-cover border-2 border-black grayscale" alt="Featured NJ Listing">
+                </div>
+                <div class="absolute -bottom-8 -right-8 bg-black text-white p-10 max-w-xs">
+                    <p class="serif italic text-3xl mb-4 text-[var(--gsg-magenta)]">"Unmatched focus on the Gold Coast."</p>
+                    <div class="flex text-[var(--gsg-magenta)] text-sm mb-2">★★★★★</div>
+                    <p class="oswald text-xs tracking-widest uppercase">Verified Zillow Partner</p>
+                </div>
+            </div>
+
+            <div class="order-1 lg:order-2">
+                <h3 class="oswald text-4xl font-bold mb-8 uppercase tracking-tighter">The Agent <span class="text-gray-300">Behind the Brand.</span></h3>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    Gabrielle Basulto isn't just selling homes; she's brokering lifestyles. With an intimate knowledge of New Jersey's most prestigious zip codes and a marketing machine built for the digital age, Gabrielle ensures every client receives the "Noir" treatment—exclusive, sophisticated, and results-oriented.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-6 group cursor-pointer border-b border-gray-200 pb-4">
+                        <span class="oswald text-[var(--gsg-magenta)] font-bold text-xl">01.</span>
+                        <span class="oswald text-sm font-bold tracking-[0.2em] uppercase group-hover:translate-x-2 transition-transform">Aggressive Digital Marketing</span>
                     </div>
+                    <div class="flex items-center gap-6 group cursor-pointer border-b border-gray-200 pb-4">
+                        <span class="oswald text-[var(--gsg-magenta)] font-bold text-xl">02.</span>
+                        <span class="oswald text-sm font-bold tracking-[0.2em] uppercase group-hover:translate-x-2 transition-transform">Premier Zillow Exposure</span>
+                    </div>
+                    <div class="flex items-center gap-6 group cursor-pointer border-b border-gray-200 pb-4">
+                        <span class="oswald text-[var(--gsg-magenta)] font-bold text-xl">03.</span>
+                        <span class="oswald text-sm font-bold tracking-[0.2em] uppercase group-hover:translate-x-2 transition-transform">Concierge Service Model</span>
+                    </div>
+                </div>
+                <div class="mt-12">
+                    <a href="https://www.zillow.com/profile/gabriellebasulto" target="_blank" class="oswald text-sm font-bold uppercase tracking-widest border-b-2 border-black pb-2 hover:text-[var(--gsg-magenta)] hover:border-[var(--gsg-magenta)] transition-all">
+                        View Complete Zillow Portfolio & Reviews →
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-white pt-32 pb-12 px-6 md:px-16">
-        <div class="max-w-[2000px] mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-start gap-16 mb-32">
-                <div class="brand-font text-5xl opacity-80">GardenStateGab</div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-16">
-                    <div class="flex flex-col gap-4 text-[9px] uppercase tracking-widest text-white/40">
-                        <span class="text-white/80 mb-2">Navigation</span>
-                        <a href="#" class="hover:text-white transition-colors">Home</a>
-                        <a href="#archive" class="hover:text-white transition-colors">Archive</a>
-                        <a href="#" class="hover:text-white transition-colors">Contact</a>
-                    </div>
-                    <div class="flex flex-col gap-4 text-[9px] uppercase tracking-widest text-white/40">
-                        <span class="text-white/80 mb-2">Connect</span>
-                        <a href="#" class="hover:text-white transition-colors">Instagram</a>
-                        <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
-                    </div>
+    <footer class="bg-black text-white pt-24 pb-12 px-6 md:px-12 border-t-8 border-[var(--gsg-magenta)]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="oswald text-4xl font-bold tracking-tighter mb-6">GABRIELLE <br> BASULTO</h4>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest font-bold max-w-xs leading-loose">
+                        A licensed real estate professional dedicated to the Garden State. <br>
+                        NJ // 2026 Noir Collective.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="oswald text-sm font-bold mb-6 text-[var(--gsg-magenta)] uppercase tracking-widest">Connect</h5>
+                    <ul class="text-xs uppercase tracking-widest font-bold space-y-4">
+                        <li><a href="tel:9732062128" class="hover:text-[var(--gsg-magenta)] transition-colors">973.206.2128</a></li>
+                        <li><a href="mailto:gabrielle@gardenstategab.com" class="hover:text-[var(--gsg-magenta)] transition-colors">Direct Email</a></li>
+                        <li><a href="https://www.zillow.com/profile/gabriellebasulto" class="hover:text-[var(--gsg-magenta)] transition-colors">Zillow Profile</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="oswald text-sm font-bold mb-6 text-[var(--gsg-magenta)] uppercase tracking-widest">Inquiries</h5>
+                    <ul class="text-xs uppercase tracking-widest font-bold space-y-4">
+                        <li><a href="#form" class="hover:text-[var(--gsg-magenta)] transition-colors">Register Home</a></li>
+                        <li><a href="#form" class="hover:text-[var(--gsg-magenta)] transition-colors">Buying Consultation</a></li>
+                        <li><button onclick="togglePrivacy()" class="hover:text-[var(--gsg-magenta)] transition-colors">Privacy Policy</button></li>
+                    </ul>
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row justify-between pt-12 border-t border-white/10 text-[8px] uppercase tracking-[0.4em] text-white/20">
-                <p>© 2026 GSG COLLECTIVE</p>
-                <p>LICENSED IN NEW JERSEY</p>
+
+            <div class="border-t border-gray-900 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
+                <p class="text-[9px] font-bold text-gray-600 uppercase tracking-[0.4em]">© 2026 GARDENSTATEGAB COLLECTIVE // ALL RIGHTS RESERVED</p>
+                <p class="text-[9px] font-bold text-gray-600 uppercase tracking-[0.4em]">
+                    STYLIZED BY <a href="https://ladmedia.co" target="_blank" class="text-white hover:text-[var(--gsg-magenta)] underline decoration-[var(--gsg-magenta)] decoration-2">LAD MEDIA</a>
+                </p>
             </div>
         </div>
     </footer>
 
+    <!-- Privacy Modal -->
+    <div id="privacy-modal">
+        <div class="bg-white p-12 max-w-2xl w-full border-b-8 border-[var(--gsg-magenta)] relative">
+            <h3 class="oswald text-4xl font-bold mb-8 uppercase tracking-tighter">DATA PRIVACY & CONSENT</h3>
+            <div class="text-xs text-black space-y-6 leading-relaxed uppercase tracking-widest font-bold">
+                <p><span class="text-[var(--gsg-magenta)]">■</span> <strong>Encryption:</strong> Your personal data (Name/Phone) is stored securely and only accessible by Gabrielle Basulto.</p>
+                <p><span class="text-[var(--gsg-magenta)]">■</span> <strong>Non-Disclosure:</strong> GardenStateGab Collective guarantees your information is never sold to third-party data firms or brokers.</p>
+                <p><span class="text-[var(--gsg-magenta)]">■</span> <strong>Marketing Authorization:</strong> Submission of this form constitutes permission to receive marketing communications, property alerts, and professional consultations via telephone and SMS from Gabrielle Basulto.</p>
+            </div>
+            <button onclick="togglePrivacy()" class="mt-12 bg-black text-white oswald px-12 py-5 tracking-widest w-full hover:bg-[var(--gsg-magenta)] transition-all">DISMISS TERMS</button>
+        </div>
+    </div>
+
     <script>
-        // Hero Slider Logic
-        const slides = document.querySelectorAll('.slide');
-        let currentIdx = 0;
-        let slideInterval;
-
-        function nextSlide() {
-            slides[currentIdx].classList.remove('active');
-            currentIdx = (currentIdx + 1) % slides.length;
-            slides[currentIdx].classList.add('active');
+        function togglePrivacy() {
+            document.getElementById('privacy-modal').classList.toggle('active');
         }
-
-        function startSlider() {
-            if (slideInterval) clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-
-        // Navbar Scroll Logic
-        const nav = document.getElementById('navbar');
-        const logo = document.getElementById('logo-text');
-        const links = document.getElementById('nav-links');
-        const menuBtn = document.getElementById('menu-btn');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                nav.classList.add('nav-blur');
-                logo.style.color = 'black';
-                if (links) links.style.color = 'black';
-                menuBtn.style.color = 'black';
-            } else {
-                nav.classList.remove('nav-blur');
-                logo.style.color = 'white';
-                if (links) links.style.color = 'white';
-                menuBtn.style.color = 'white';
-            }
-        });
-
-        // Mobile Menu Logic
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuOpen = document.getElementById('menu-btn');
-        const menuClose = document.getElementById('menu-close');
-
-        menuOpen.onclick = () => mobileMenu.classList.add('active');
-        menuClose.onclick = () => mobileMenu.classList.remove('active');
-
-        // Init
-        window.onload = () => {
-            document.body.classList.add('loaded');
-            startSlider();
-        };
-
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) clearInterval(slideInterval);
-            else startSlider();
+        
+        // Form Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
