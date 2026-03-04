@@ -51,54 +51,56 @@
         }
         /* 2026 Spacing */
         .section-padding { padding-top: clamp(6rem, 15vw, 15rem); padding-bottom: clamp(6rem, 15vw, 15rem); }
-        .grid-gap { gap: clamp(2rem, 8vw, 6rem); }
         
-        .image-container {
+        /* Zillow Frame Container */
+        .zillow-frame-wrapper {
             position: relative;
+            width: 100%;
+            height: 800px;
             overflow: hidden;
-            background: #f7f7f7;
+            border: 1px solid rgba(0,0,0,0.05);
+            background: #fff;
         }
-        .image-container img {
-            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        .zillow-frame-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
-        .image-container:hover img {
-            transform: scale(1.08);
+
+        /* Privacy Modal Styles */
+        #privacy-modal {
+            backdrop-filter: blur(15px);
+            background: rgba(10, 10, 10, 0.95);
+            display: none;
         }
-        
-        .btn-2026 {
-            text-transform: uppercase;
-            font-size: 10px;
-            letter-spacing: 0.4em;
-            padding-bottom: 4px;
-            border-bottom: 1px solid rgba(0,0,0,0.2);
-            transition: all 0.4s ease;
-        }
-        .btn-2026:hover {
-            border-bottom-color: black;
-            opacity: 0.6;
+        #privacy-modal.active {
+            display: flex;
         }
     </style>
 </head>
 <body class="selection:bg-black selection:text-white">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-700 py-10 px-6 md:px-16">
-        <div class="max-w-[2000px] mx-auto flex justify-between items-end">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-700 py-8 px-6 md:px-16">
+        <div class="max-w-[2000px] mx-auto flex justify-between items-center">
             <div class="flex flex-col">
-                <span id="logo-text" class="brand-font text-4xl md:text-5xl leading-none text-white transition-colors duration-500">GardenStateGab</span>
-                <span id="logo-sub" class="text-[8px] uppercase tracking-[0.8em] mt-2 text-white/50 transition-colors duration-500">New Jersey // Collective</span>
+                <span id="logo-text" class="brand-font text-3xl md:text-4xl leading-none text-white transition-colors duration-500">GardenStateGab</span>
+                <span id="logo-sub" class="text-[7px] uppercase tracking-[0.8em] mt-1 text-white/50 transition-colors duration-500">New Jersey // Collective</span>
             </div>
 
-            <div id="nav-links" class="hidden lg:flex space-x-12 text-[9px] uppercase tracking-[0.5em] font-light text-white transition-colors duration-500 pb-1">
-                <a href="#" class="hover:italic transition-all">Inventory</a>
-                <a href="#" class="hover:italic transition-all">Archives</a>
-                <a href="#" class="hover:italic transition-all">Studio</a>
-                <a href="#" class="hover:italic transition-all">Contact</a>
+            <div id="nav-links" class="hidden xl:flex space-x-10 text-[9px] uppercase tracking-[0.4em] font-light text-white transition-colors duration-500 items-center">
+                <a href="#zillow-section" class="hover:italic transition-all">About Us</a>
+                <a href="#zillow-section" class="hover:italic transition-all">Archive</a>
+                <a href="#" class="hover:italic transition-all">Sellers</a>
+                <a href="#" class="hover:italic transition-all">Buyers</a>
+                <a href="#" class="hover:italic transition-all">Client Registration</a>
+                <div class="w-px h-4 bg-white/20"></div>
+                <a href="tel:9732062128" class="font-normal tracking-widest">(973) 206-2128</a>
             </div>
 
-            <button class="text-white transition-colors duration-500 pb-1" id="menu-toggle">
+            <button class="text-white transition-colors duration-500 flex items-center" id="menu-toggle">
                 <span class="text-[9px] uppercase tracking-widest font-light mr-4 hidden md:inline-block">Menu</span>
-                <div class="inline-block w-8 h-[1px] bg-current align-middle"></div>
+                <div class="inline-block w-6 h-[1px] bg-current align-middle"></div>
             </button>
         </div>
     </nav>
@@ -110,14 +112,35 @@
             <button id="menu-close" class="text-[10px] uppercase tracking-widest border-b border-black">Close</button>
         </div>
         <div class="flex flex-col space-y-4">
-            <a href="#" class="serif text-6xl md:text-9xl hover:italic transition-all duration-500">Portfolio</a>
-            <a href="#" class="serif text-6xl md:text-9xl hover:italic transition-all duration-500">Journal</a>
-            <a href="#" class="serif text-6xl md:text-9xl hover:italic transition-all duration-500">About</a>
-            <a href="#" class="serif text-6xl md:text-9xl hover:italic transition-all duration-500">Contact</a>
+            <a href="#zillow-section" class="serif text-6xl md:text-8xl hover:italic transition-all duration-500 menu-link">About Us</a>
+            <a href="#zillow-section" class="serif text-6xl md:text-8xl hover:italic transition-all duration-500 menu-link">Archive</a>
+            <a href="#" class="serif text-6xl md:text-8xl hover:italic transition-all duration-500">Sellers</a>
+            <a href="#" class="serif text-6xl md:text-8xl hover:italic transition-all duration-500">Buyers</a>
+            <a href="#" class="serif text-6xl md:text-8xl hover:italic transition-all duration-500">Register</a>
         </div>
-        <div class="mt-auto flex justify-between text-[10px] uppercase tracking-widest text-gray-400">
-            <p>NJ Licensed Brokerage</p>
+        <div class="mt-auto flex flex-col md:flex-row justify-between text-[10px] uppercase tracking-widest text-gray-400 gap-4">
+            <p>NJ Licensed Brokerage // (973) 206-2128</p>
             <p>@GardenStateGab</p>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="fixed inset-0 z-[100] p-6 md:p-16 flex items-center justify-center">
+        <div class="max-w-2xl w-full bg-white p-8 md:p-16 relative shadow-2xl">
+            <button id="close-privacy" class="absolute top-8 right-8 text-[10px] uppercase tracking-widest border-b border-black">Close</button>
+            <h2 class="serif text-4xl md:text-5xl mb-8">Privacy Policy</h2>
+            <div class="space-y-6 text-sm font-light leading-relaxed text-gray-600">
+                <p class="uppercase tracking-widest text-[10px] text-black font-bold">Data Commitment</p>
+                <p>
+                    GardenStateGab is committed to the absolute security and integrity of your personal information. We maintain a strict policy against the sale of user data to third parties.
+                </p>
+                <p>
+                    The information collected through this site is used exclusively for internal marketing communication purposes. This includes the delivery of curated property portfolios, market insights, and brokerage updates relevant to your search.
+                </p>
+                <p>
+                    By interacting with this site, you acknowledge that your data facilitates a bespoke real estate experience. You may opt-out of marketing communications at any time.
+                </p>
+            </div>
         </div>
     </div>
 
@@ -146,111 +169,49 @@
         </div>
     </section>
 
-    <!-- Manifesto -->
-    <section class="section-padding px-6 md:px-16">
-        <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-7">
-                <h2 class="serif text-4xl md:text-7xl leading-tight">
-                    We specialize in properties <br>that define a <span class="italic">specific feeling</span> of time and place.
-                </h2>
+    <!-- Zillow Embedded Integration Section (Moved Up) -->
+    <section id="zillow-section" class="section-padding bg-[#f9f9f9] px-6 md:px-16">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-[10px] uppercase tracking-[0.5em] text-gray-400 block mb-6">Expertise & Transparency</span>
+                <h2 class="serif text-5xl md:text-7xl mb-6">Verified Success.</h2>
+                <p class="text-sm font-light text-gray-500 max-w-xl mx-auto">Browse live listings and verified client reviews directly from the archive.</p>
             </div>
-            <div class="lg:col-start-9 lg:col-span-4">
-                <p class="text-sm font-light leading-loose text-gray-500">
-                    Real estate is often discussed in square footage and finishes. We prefer to discuss intention, light, and the way a space facilitates the human experience. GardenStateGab is a design-first brokerage for the modern collector.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2026 Grid -->
-    <section class="px-6 md:px-16 pb-32">
-        <div class="max-w-[2000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-gap">
             
-            <!-- Item 1 -->
-            <div class="group cursor-pointer">
-                <div class="image-container aspect-[3/4] mb-8">
-                    <img src="https://images.unsplash.com/photo-1600607687940-4e524cb35a5a?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0" alt="Property">
-                    <div class="absolute top-6 right-6 text-white text-[9px] uppercase tracking-widest font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Available</div>
-                </div>
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h3 class="serif text-3xl mb-1">Oak & Stone</h3>
-                        <p class="text-[9px] uppercase tracking-[0.3em] text-gray-400">Rumson, NJ</p>
-                    </div>
-                    <p class="serif italic text-xl">$14.2M</p>
-                </div>
+            <div class="zillow-frame-wrapper shadow-2xl">
+                <!-- Direct Zillow Profile Embed -->
+                <iframe 
+                    src="https://www.zillow.com/profile/gabriellebasulto" 
+                    title="Gabrielle Basulto Zillow Profile"
+                    sandbox="allow-scripts allow-same-origin allow-popups"
+                    loading="lazy">
+                </iframe>
             </div>
-
-            <!-- Item 2 -->
-            <div class="group cursor-pointer md:mt-24">
-                <div class="image-container aspect-[3/4] mb-8">
-                    <img src="https://images.unsplash.com/photo-1600566753190-17f0bbc2a6c3?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0" alt="Property">
-                    <div class="absolute top-6 right-6 text-white text-[9px] uppercase tracking-widest font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Reserved</div>
-                </div>
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h3 class="serif text-3xl mb-1">The Glass House</h3>
-                        <p class="text-[9px] uppercase tracking-[0.3em] text-gray-400">Alpine, NJ</p>
-                    </div>
-                    <p class="serif italic text-xl">$9.5M</p>
-                </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="group cursor-pointer lg:mt-48">
-                <div class="image-container aspect-[3/4] mb-8">
-                    <img src="https://images.unsplash.com/photo-1600585154526-990dcea4db0d?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0" alt="Property">
-                    <div class="absolute top-6 right-6 text-white text-[9px] uppercase tracking-widest font-semibold opacity-0 group-hover:opacity-100 transition-opacity">New</div>
-                </div>
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h3 class="serif text-3xl mb-1">Symmetry Park</h3>
-                        <p class="text-[9px] uppercase tracking-[0.3em] text-gray-400">Princeton, NJ</p>
-                    </div>
-                    <p class="serif italic text-xl">$7.8M</p>
-                </div>
-            </div>
-
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#0a0a0a] text-white pt-32 pb-12 px-6 md:px-16">
+    <footer class="bg-[#0a0a0a] text-white pt-24 pb-12 px-6 md:px-16">
         <div class="max-w-[2000px] mx-auto">
-            <div class="flex flex-col lg:flex-row justify-between items-start gap-24 mb-32">
-                <div class="max-w-2xl">
-                    <h2 class="serif text-6xl md:text-9xl mb-12">Begin the <br>Archive.</h2>
-                    <a href="mailto:hello@gardenstategab.com" class="serif text-2xl md:text-4xl border-b border-white/20 pb-4 hover:border-white transition-all">hello@gardenstategab.com</a>
-                </div>
-                <div class="grid grid-cols-2 gap-24 text-[10px] uppercase tracking-[0.4em] font-light">
-                    <div class="flex flex-col gap-6">
-                        <span class="text-white/30">Connect</span>
-                        <a href="#" class="hover:text-white/50 transition-all">Instagram</a>
-                        <a href="#" class="hover:text-white/50 transition-all">LinkedIn</a>
-                        <a href="#" class="hover:text-white/50 transition-all">Vimeo</a>
-                    </div>
-                    <div class="flex flex-col gap-6">
-                        <span class="text-white/30">Company</span>
-                        <a href="#" class="hover:text-white/50 transition-all">Team</a>
-                        <a href="#" class="hover:text-white/50 transition-all">Journal</a>
-                        <a href="#" class="hover:text-white/50 transition-all">Press</a>
-                    </div>
-                </div>
-            </div>
-
+            
             <!-- IDX & Extended Navigation -->
-            <div class="flex flex-col gap-12 mb-20 border-t border-white/5 pt-20">
-                <div class="flex flex-wrap gap-8 md:gap-12 text-[9px] uppercase tracking-[0.4em] font-light text-white/60">
-                    <a href="#" class="hover:text-white transition-all">Home Page</a>
-                    <a href="#" class="hover:text-white transition-all">Contact Us</a>
-                    <a href="#" class="hover:text-white transition-all">Site Map</a>
-                    <a href="#" class="hover:text-white transition-all">Agent Login</a>
-                    <a href="#" class="hover:text-white transition-all">Client Login</a>
+            <div class="flex flex-col gap-12 mb-20">
+                <div class="flex flex-col md:flex-row justify-between items-start gap-8 border-b border-white/5 pb-12 mb-12">
+                    <div class="flex flex-wrap gap-8 md:gap-12 text-[9px] uppercase tracking-[0.4em] font-light text-white/60">
+                        <a href="#" class="hover:text-white transition-all">Home Page</a>
+                        <a href="#" class="hover:text-white transition-all">Contact Us</a>
+                        <a href="#" class="hover:text-white transition-all">Site Map</a>
+                        <a href="https://www.zillow.com/profile/gabriellebasulto" target="_blank" class="hover:text-white transition-all">External Zillow Link</a>
+                    </div>
+                    <div class="flex gap-8 text-[9px] uppercase tracking-[0.4em] font-light text-white/60">
+                        <a href="#" class="hover:text-white transition-all">Instagram</a>
+                        <a href="#" class="hover:text-white transition-all">LinkedIn</a>
+                    </div>
                 </div>
                 
                 <div class="max-w-4xl space-y-6">
                     <p class="text-[9px] uppercase tracking-[0.2em] text-white/40 leading-relaxed">
-                        ©1997-2026 Privacy Policy, Terms of Use, Accessibility Statement.
+                        ©1997-2026 <a href="javascript:void(0)" class="open-privacy hover:text-white transition-all">Privacy Policy</a>, Terms of Use, Accessibility Statement.
                     </p>
                     <p class="text-[10px] text-white/40 leading-relaxed font-light">
                         The data relating to real estate for sale on this website comes in part from the IDX Program of Garden State Multiple Listing Service, L.L.C. Real estate listings held by other brokerage firms are marked as IDX Listing. 
@@ -263,7 +224,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-white/10 text-[8px] uppercase tracking-[0.5em] text-white/30">
                 <p>© 2026 GARDENSTATEGAB. ALL RIGHTS RESERVED.</p>
                 <div class="flex gap-12 mt-6 md:mt-0">
-                    <a href="#" class="hover:text-white transition-all">Privacy</a>
+                    <a href="javascript:void(0)" class="open-privacy hover:text-white transition-all">Privacy</a>
                     <a href="#" class="hover:text-white transition-all">Terms</a>
                     <a href="https://ladmedia.co" class="hover:text-white transition-all">LAD MEDIA</a>
                 </div>
@@ -287,14 +248,14 @@
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
                 navbar.classList.add('nav-blur');
-                navbar.classList.replace('py-10', 'py-6');
+                navbar.classList.replace('py-8', 'py-4');
                 logoText.classList.replace('text-white', 'text-black');
                 logoSub.classList.replace('text-white/50', 'text-black/30');
                 navLinks.classList.replace('text-white', 'text-black');
                 menuToggle.classList.replace('text-white', 'text-black');
             } else {
                 navbar.classList.remove('nav-blur');
-                navbar.classList.replace('py-6', 'py-10');
+                navbar.classList.replace('py-4', 'py-8');
                 logoText.classList.replace('text-black', 'text-white');
                 logoSub.classList.replace('text-black/30', 'text-white/50');
                 navLinks.classList.replace('text-black', 'text-white');
@@ -305,6 +266,7 @@
         // Menu Logic
         const mobileMenu = document.getElementById('mobile-menu');
         const menuClose = document.getElementById('menu-close');
+        const menuLinks = document.querySelectorAll('.menu-link');
 
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.remove('hidden');
@@ -312,9 +274,38 @@
             document.body.style.overflow = 'hidden';
         });
 
-        menuClose.addEventListener('click', () => {
+        const closeMenu = () => {
             mobileMenu.classList.add('hidden');
             document.body.style.overflow = 'auto';
+        };
+
+        menuClose.addEventListener('click', closeMenu);
+        menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+        // Privacy Modal Logic
+        const privacyModal = document.getElementById('privacy-modal');
+        const openPrivacyBtns = document.querySelectorAll('.open-privacy');
+        const closePrivacyBtn = document.getElementById('close-privacy');
+
+        openPrivacyBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                privacyModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closePrivacyBtn.addEventListener('click', () => {
+            privacyModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal on background click
+        privacyModal.addEventListener('click', (e) => {
+            if (e.target === privacyModal) {
+                privacyModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
         });
     </script>
 </body>
