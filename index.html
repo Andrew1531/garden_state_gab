@@ -3,398 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GardenStateGab | New Jersey Luxury Real Estate</title>
+    <title>GARDENSTATEGAB // 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@100;200;300;400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #ffffff;
+            --fg: #0a0a0a;
+            --accent: #e5e5e5;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            color: #202124;
+            color: var(--fg);
+            background-color: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
-        .compass-circle {
-            width: 32px;
-            height: 32px;
-            border: 2px solid white; /* Default state */
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
         }
-        .compass-dot {
-            width: 4px;
-            height: 4px;
-            background: white; /* Default state */
-            border-radius: 50%;
-            transition: all 0.3s ease;
+        .brand-font {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: -0.02em;
         }
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 0.5px solid rgba(0,0,0,0.05);
         }
-        .hero-gradient {
-            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35));
+        .hero-zoom {
+            animation: slowZoom 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        @keyframes slowZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
         }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+        .text-reveal {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
         }
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 10px;
+        .reveal-item {
+            transform: translateY(110%);
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .active .reveal-item {
+            transform: translateY(0);
+        }
+        /* 2026 Spacing */
+        .section-padding { padding-top: clamp(6rem, 15vw, 15rem); padding-bottom: clamp(6rem, 15vw, 15rem); }
+        .grid-gap { gap: clamp(2rem, 8vw, 6rem); }
+        
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            background: #f7f7f7;
+        }
+        .image-container img {
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .image-container:hover img {
+            transform: scale(1.08);
+        }
+        
+        .btn-2026 {
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.4em;
+            padding-bottom: 4px;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+        }
+        .btn-2026:hover {
+            border-bottom-color: black;
+            opacity: 0.6;
         }
     </style>
 </head>
-<body class="bg-white">
+<body class="selection:bg-black selection:text-white">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 px-6 py-4">
-        <div class="max-w-[1400px] mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-8">
-                <!-- Logo -->
-                <div class="flex items-center gap-2 cursor-pointer">
-                    <div class="compass-circle border-white" id="logo-circle">
-                        <div class="compass-dot bg-white" id="logo-dot"></div>
-                    </div>
-                    <span id="logo-text" class="text-xl font-bold tracking-tight uppercase text-white">GardenStateGab</span>
-                </div>
-                <!-- Desktop Links -->
-                <div id="nav-links" class="hidden lg:flex space-x-8 text-[13px] font-semibold tracking-wide text-white">
-                    <a href="#" class="hover:opacity-70 transition-opacity">Buy</a>
-                    <a href="#" class="hover:opacity-70 transition-opacity">Sell</a>
-                    <a href="#" class="hover:opacity-70 transition-opacity">Rent</a>
-                    <a href="#" class="hover:opacity-70 transition-opacity">New Jersey Exclusives</a>
-                </div>
-            </div>
-            
-            <div class="hidden md:flex items-center">
-                <button id="cta-btn" class="px-5 py-2.5 rounded-sm border border-white bg-transparent text-white transition-all text-[13px] font-bold uppercase tracking-wider hover:bg-white hover:text-black">
-                    Get in Touch
-                </button>
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-700 py-10 px-6 md:px-16">
+        <div class="max-w-[2000px] mx-auto flex justify-between items-end">
+            <div class="flex flex-col">
+                <span id="logo-text" class="brand-font text-4xl md:text-5xl leading-none text-white transition-colors duration-500">GardenStateGab</span>
+                <span id="logo-sub" class="text-[8px] uppercase tracking-[0.8em] mt-2 text-white/50 transition-colors duration-500">New Jersey // Collective</span>
             </div>
 
-            <!-- Mobile Menu Toggle -->
-            <button class="md:hidden text-white" id="menu-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
+            <div id="nav-links" class="hidden lg:flex space-x-12 text-[9px] uppercase tracking-[0.5em] font-light text-white transition-colors duration-500 pb-1">
+                <a href="#" class="hover:italic transition-all">Inventory</a>
+                <a href="#" class="hover:italic transition-all">Archives</a>
+                <a href="#" class="hover:italic transition-all">Studio</a>
+                <a href="#" class="hover:italic transition-all">Contact</a>
+            </div>
+
+            <button class="text-white transition-colors duration-500 pb-1" id="menu-toggle">
+                <span class="text-[9px] uppercase tracking-widest font-light mr-4 hidden md:inline-block">Menu</span>
+                <div class="inline-block w-8 h-[1px] bg-current align-middle"></div>
             </button>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] hidden flex-col p-8">
-        <div class="flex justify-between items-center mb-12">
-            <span class="text-xl font-bold uppercase">GardenStateGab</span>
-            <button id="menu-close">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
+    <!-- Fullscreen Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] hidden flex-col p-12 md:p-24 transition-all duration-700">
+        <div class="flex justify-between items-start mb-24">
+            <span class="brand-font text-4xl">GSG</span>
+            <button id="menu-close" class="text-[10px] uppercase tracking-widest border-b border-black">Close</button>
         </div>
-        <div class="flex flex-col gap-6 text-2xl font-bold">
-            <a href="#">Buy</a>
-            <a href="#">Sell</a>
-            <a href="#">Rent</a>
-            <a href="#">NJ Market Reports</a>
+        <div class="flex flex-col space-y-4">
+            <a href="#" class="serif text-6xl md:text-9xl hover:italic transition-all duration-500">Portfolio</a>
+            <a href="#" class="serif text-6xl md:text-9xl hover:italic transition-all duration-500">Journal</a>
+            <a href="#" class="serif text-6xl md:text-9xl hover:italic transition-all duration-500">About</a>
+            <a href="#" class="serif text-6xl md:text-9xl hover:italic transition-all duration-500">Contact</a>
+        </div>
+        <div class="mt-auto flex justify-between text-[10px] uppercase tracking-widest text-gray-400">
+            <p>NJ Licensed Brokerage</p>
+            <p>@GardenStateGab</p>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="relative h-[85vh] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1600607687940-4e524cb35a5a?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover" alt="Hero Image">
-            <div class="absolute inset-0 hero-gradient"></div>
+    <!-- Hero -->
+    <section class="relative h-[110vh] w-full bg-black overflow-hidden">
+        <div class="absolute inset-0 z-0 hero-zoom">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2400" class="w-full h-full object-cover opacity-60" alt="Estate">
         </div>
-
-        <div class="relative z-10 w-full px-6 max-w-4xl text-center text-white">
-            <h1 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight">Find your place in Jersey.</h1>
-            
-            <div class="bg-white rounded-md shadow-2xl p-2 md:p-3 flex items-center w-full">
-                <div class="ml-4 text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
+        <div class="relative z-10 h-full flex flex-col justify-end p-6 md:p-16 pb-24 text-white">
+            <div class="max-w-[1400px] w-full mx-auto">
+                <div class="text-reveal">
+                    <h1 class="serif text-7xl md:text-[12vw] leading-[0.85] mb-8 reveal-item">
+                        Atmospheric <br>Real Estate.
+                    </h1>
                 </div>
-                <input type="text" placeholder="Search Jersey Shore, Montclair, or Princeton..." class="w-full px-4 py-3 text-lg text-black outline-none placeholder:text-gray-400">
-                <button class="hidden md:block bg-black text-white px-8 py-3 rounded-sm font-bold uppercase tracking-wider text-sm transition-colors hover:bg-gray-800">
-                    Search
-                </button>
-            </div>
-            
-            <div class="mt-8 flex flex-wrap justify-center gap-4 text-sm font-semibold">
-                <span class="cursor-pointer hover:underline">Jersey City</span>
-                <span class="opacity-50">|</span>
-                <span class="cursor-pointer hover:underline">Hoboken</span>
-                <span class="opacity-50">|</span>
-                <span class="cursor-pointer hover:underline">Short Hills</span>
-                <span class="opacity-50">|</span>
-                <span class="cursor-pointer hover:underline">Rumson</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Listings -->
-    <section class="py-24 px-6 bg-[#f7f7f7]">
-        <div class="max-w-[1400px] mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                <div>
-                    <h2 class="text-3xl font-bold mb-2">Featured NJ Listings</h2>
-                    <p class="text-gray-600 font-light">Explore our hand-picked selection of luxury homes across the Garden State.</p>
-                </div>
-                <button class="text-sm font-bold underline flex items-center gap-2 hover:text-gray-600">
-                    View all listings
-                </button>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-white group cursor-pointer border border-gray-100 transition-shadow hover:shadow-xl">
-                    <div class="relative aspect-[16/10] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Property">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-white px-3 py-1 text-[10px] font-bold tracking-wider rounded-sm shadow-sm uppercase">Exclusive</span>
-                        </div>
-                        <button class="absolute top-4 right-4 p-2 bg-black/20 backdrop-blur-md rounded-full text-white hover:bg-black/50 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-                        </button>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">$12,500,000</h3>
-                            <div class="flex gap-4 text-xs font-semibold text-gray-500">
-                                <span>6 BD</span>
-                                <span>8 BA</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-900 font-medium mb-1">22 Highview Terrace</p>
-                        <p class="text-gray-500 text-sm mb-6">Montclair, NJ 07042</p>
-                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-                            <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 bg-gray-200 rounded-full"></div>
-                                <span>GSG Private Listing</span>
-                            </div>
-                            <span>8,240 SQ FT</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-white group cursor-pointer border border-gray-100 transition-shadow hover:shadow-xl">
-                    <div class="relative aspect-[16/10] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Property">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-white px-3 py-1 text-[10px] font-bold tracking-wider rounded-sm shadow-sm uppercase">New Listing</span>
-                        </div>
-                        <button class="absolute top-4 right-4 p-2 bg-black/20 backdrop-blur-md rounded-full text-white hover:bg-black/50 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-                        </button>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">$3,150,000</h3>
-                            <div class="flex gap-4 text-xs font-semibold text-gray-500">
-                                <span>4 BD</span>
-                                <span>3.5 BA</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-900 font-medium mb-1">45 Ocean Avenue</p>
-                        <p class="text-gray-500 text-sm mb-6">Spring Lake, NJ 07762</p>
-                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-                            <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 bg-gray-200 rounded-full"></div>
-                                <span>Market Leader</span>
-                            </div>
-                            <span>4,100 SQ FT</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-white group cursor-pointer border border-gray-100 transition-shadow hover:shadow-xl">
-                    <div class="relative aspect-[16/10] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600566753190-17f0bbc2a6c3?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Property">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-white px-3 py-1 text-[10px] font-bold tracking-wider rounded-sm shadow-sm uppercase">Just Sold</span>
-                        </div>
-                        <button class="absolute top-4 right-4 p-2 bg-black/20 backdrop-blur-md rounded-full text-white hover:bg-black/50 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-                        </button>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">$7,800,000</h3>
-                            <div class="flex gap-4 text-xs font-semibold text-gray-500">
-                                <span>5 BD</span>
-                                <span>6 BA</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-900 font-medium mb-1">12 Princeton Lane</p>
-                        <p class="text-gray-500 text-sm mb-6">Princeton, NJ 08540</p>
-                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-                            <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 bg-gray-200 rounded-full"></div>
-                                <span>GardenStateGab Exclusive</span>
-                            </div>
-                            <span>6,500 SQ FT</span>
-                        </div>
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+                    <p class="text-[10px] uppercase tracking-[0.6em] font-light max-w-xs leading-relaxed opacity-60">
+                        A modern perspective on New Jersey's most significant architectural landscapes.
+                    </p>
+                    <div class="w-px h-16 bg-white/20 hidden md:block"></div>
+                    <div class="text-[10px] uppercase tracking-[0.4em]">
+                        Scroll to explore
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why GSG -->
-    <section class="py-24 px-6 border-b border-gray-100">
-        <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div class="order-2 lg:order-1 relative h-[500px]">
-                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800" class="absolute top-0 left-0 w-3/4 h-3/4 object-cover rounded-sm shadow-2xl z-10" alt="NJ Office">
-                <img src="https://images.unsplash.com/photo-1556761175-4b46a572b186?auto=format&fit=crop&q=80&w=800" class="absolute bottom-0 right-0 w-3/4 h-3/4 object-cover rounded-sm shadow-xl" alt="NJ Team">
+    <!-- Manifesto -->
+    <section class="section-padding px-6 md:px-16">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7">
+                <h2 class="serif text-4xl md:text-7xl leading-tight">
+                    We specialize in properties <br>that define a <span class="italic">specific feeling</span> of time and place.
+                </h2>
             </div>
-            <div class="order-1 lg:order-2">
-                <h2 class="text-4xl font-bold mb-8 leading-tight">Elevating NJ <br />Real Estate.</h2>
-                <div class="space-y-12">
-                    <div class="flex gap-6">
-                        <div class="shrink-0 w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-                        </div>
-                        <div>
-                            <h4 class="font-bold mb-2">Gab Concierge</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed">Boost your NJ home's value with upfront investment in staging, renovations, and design—paid only at closing.</p>
-                        </div>
+            <div class="lg:col-start-9 lg:col-span-4">
+                <p class="text-sm font-light leading-loose text-gray-500">
+                    Real estate is often discussed in square footage and finishes. We prefer to discuss intention, light, and the way a space facilitates the human experience. GardenStateGab is a design-first brokerage for the modern collector.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2026 Grid -->
+    <section class="px-6 md:px-16 pb-32">
+        <div class="max-w-[2000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-gap">
+            
+            <!-- Item 1 -->
+            <div class="group cursor-pointer">
+                <div class="image-container aspect-[3/4] mb-8">
+                    <img src="https://images.unsplash.com/photo-1600607687940-4e524cb35a5a?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0" alt="Property">
+                    <div class="absolute top-6 right-6 text-white text-[9px] uppercase tracking-widest font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Available</div>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="serif text-3xl mb-1">Oak & Stone</h3>
+                        <p class="text-[9px] uppercase tracking-[0.3em] text-gray-400">Rumson, NJ</p>
                     </div>
-                    <div class="flex gap-6">
-                        <div class="shrink-0 w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-                        </div>
-                        <div>
-                            <h4 class="font-bold mb-2">NJ Private Exclusives</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed">Gain access to off-market properties from Bergen County to Cape May before they hit the MLS.</p>
-                        </div>
-                    </div>
-                    <button class="bg-white border-2 border-black text-black px-10 py-3 rounded-sm font-bold uppercase tracking-wider text-sm transition-all hover:bg-black hover:text-white">
-                        Learn More
-                    </button>
+                    <p class="serif italic text-xl">$14.2M</p>
                 </div>
             </div>
+
+            <!-- Item 2 -->
+            <div class="group cursor-pointer md:mt-24">
+                <div class="image-container aspect-[3/4] mb-8">
+                    <img src="https://images.unsplash.com/photo-1600566753190-17f0bbc2a6c3?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0" alt="Property">
+                    <div class="absolute top-6 right-6 text-white text-[9px] uppercase tracking-widest font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Reserved</div>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="serif text-3xl mb-1">The Glass House</h3>
+                        <p class="text-[9px] uppercase tracking-[0.3em] text-gray-400">Alpine, NJ</p>
+                    </div>
+                    <p class="serif italic text-xl">$9.5M</p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="group cursor-pointer lg:mt-48">
+                <div class="image-container aspect-[3/4] mb-8">
+                    <img src="https://images.unsplash.com/photo-1600585154526-990dcea4db0d?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0" alt="Property">
+                    <div class="absolute top-6 right-6 text-white text-[9px] uppercase tracking-widest font-semibold opacity-0 group-hover:opacity-100 transition-opacity">New</div>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="serif text-3xl mb-1">Symmetry Park</h3>
+                        <p class="text-[9px] uppercase tracking-[0.3em] text-gray-400">Princeton, NJ</p>
+                    </div>
+                    <p class="serif italic text-xl">$7.8M</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white pt-24 pb-12 px-6 border-t border-gray-100">
-        <div class="max-w-[1400px] mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-20">
-                <div class="col-span-2">
-                    <div class="flex items-center gap-2 mb-6">
-                        <div class="compass-circle border-black"><div class="compass-dot bg-black"></div></div>
-                        <span class="text-lg font-bold tracking-tight uppercase">GardenStateGab</span>
+    <footer class="bg-[#0a0a0a] text-white pt-32 pb-12 px-6 md:px-16">
+        <div class="max-w-[2000px] mx-auto">
+            <div class="flex flex-col lg:flex-row justify-between items-start gap-24 mb-32">
+                <div class="max-w-2xl">
+                    <h2 class="serif text-6xl md:text-9xl mb-12">Begin the <br>Archive.</h2>
+                    <a href="mailto:hello@gardenstategab.com" class="serif text-2xl md:text-4xl border-b border-white/20 pb-4 hover:border-white transition-all">hello@gardenstategab.com</a>
+                </div>
+                <div class="grid grid-cols-2 gap-24 text-[10px] uppercase tracking-[0.4em] font-light">
+                    <div class="flex flex-col gap-6">
+                        <span class="text-white/30">Connect</span>
+                        <a href="#" class="hover:text-white/50 transition-all">Instagram</a>
+                        <a href="#" class="hover:text-white/50 transition-all">LinkedIn</a>
+                        <a href="#" class="hover:text-white/50 transition-all">Vimeo</a>
                     </div>
-                    <p class="text-gray-500 text-xs leading-relaxed max-w-xs uppercase tracking-tighter">
-                        Licensed Real Estate Broker in New Jersey. <br> Equal Housing Opportunity.
-                    </p>
-                </div>
-                
-                <div class="space-y-4">
-                    <h5 class="font-bold text-sm uppercase tracking-wider">The Brand</h5>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li>About GSG</li>
-                        <li>Top NJ Agents</li>
-                        <li>Join the Gab</li>
-                    </ul>
-                </div>
-                <div class="space-y-4">
-                    <h5 class="font-bold text-sm uppercase tracking-wider">Our Services</h5>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li>GSG Concierge</li>
-                        <li>Bridge Loans</li>
-                        <li>NJ Development</li>
-                    </ul>
-                </div>
-                <div class="space-y-4">
-                    <h5 class="font-bold text-sm uppercase tracking-wider">Explore Jersey</h5>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li>NJ Blog</li>
-                        <li>Market Insights</li>
-                        <li>Town Guides</li>
-                    </ul>
-                </div>
-                <div class="space-y-4">
-                    <h5 class="font-bold text-sm uppercase tracking-wider">Legal</h5>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li>Privacy</li>
-                        <li>Terms</li>
-                        <li>Fair Housing</li>
-                    </ul>
+                    <div class="flex flex-col gap-6">
+                        <span class="text-white/30">Company</span>
+                        <a href="#" class="hover:text-white/50 transition-all">Team</a>
+                        <a href="#" class="hover:text-white/50 transition-all">Journal</a>
+                        <a href="#" class="hover:text-white/50 transition-all">Press</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-400 font-bold uppercase tracking-widest">
-                <div class="flex flex-col md:flex-row gap-4 items-center">
-                    <p>© 2026 GARDENSTATEGAB. ALL RIGHTS RESERVED.</p>
-                    <span class="hidden md:inline">|</span>
-                    <a href="https://ladmedia.co" target="_blank" class="hover:text-black transition-colors">POWERED BY LAD MEDIA</a>
+            <!-- IDX & Extended Navigation -->
+            <div class="flex flex-col gap-12 mb-20 border-t border-white/5 pt-20">
+                <div class="flex flex-wrap gap-8 md:gap-12 text-[9px] uppercase tracking-[0.4em] font-light text-white/60">
+                    <a href="#" class="hover:text-white transition-all">Home Page</a>
+                    <a href="#" class="hover:text-white transition-all">Contact Us</a>
+                    <a href="#" class="hover:text-white transition-all">Site Map</a>
+                    <a href="#" class="hover:text-white transition-all">Agent Login</a>
+                    <a href="#" class="hover:text-white transition-all">Client Login</a>
                 </div>
-                <div class="flex gap-6">
-                    <a href="#" class="hover:text-black transition-colors">Instagram</a>
-                    <a href="#" class="hover:text-black transition-colors">Facebook</a>
-                    <a href="#" class="hover:text-black transition-colors">LinkedIn</a>
+                
+                <div class="max-w-4xl space-y-6">
+                    <p class="text-[9px] uppercase tracking-[0.2em] text-white/40 leading-relaxed">
+                        ©1997-2026 Privacy Policy, Terms of Use, Accessibility Statement.
+                    </p>
+                    <p class="text-[10px] text-white/40 leading-relaxed font-light">
+                        The data relating to real estate for sale on this website comes in part from the IDX Program of Garden State Multiple Listing Service, L.L.C. Real estate listings held by other brokerage firms are marked as IDX Listing. 
+                        Copyright © 2026 Garden State Multiple Listing Service, L.L.C. All rights reserved. 
+                        This content last updated on 03/03/2026 05:00 PM.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-white/10 text-[8px] uppercase tracking-[0.5em] text-white/30">
+                <p>© 2026 GARDENSTATEGAB. ALL RIGHTS RESERVED.</p>
+                <div class="flex gap-12 mt-6 md:mt-0">
+                    <a href="#" class="hover:text-white transition-all">Privacy</a>
+                    <a href="#" class="hover:text-white transition-all">Terms</a>
+                    <a href="https://ladmedia.co" class="hover:text-white transition-all">LAD MEDIA</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         const logoText = document.getElementById('logo-text');
-        const logoCircle = document.getElementById('logo-circle');
-        const logoDot = document.getElementById('logo-dot');
+        const logoSub = document.getElementById('logo-sub');
         const navLinks = document.getElementById('nav-links');
-        const ctaBtn = document.getElementById('cta-btn');
         const menuToggle = document.getElementById('menu-toggle');
 
+        // Text reveal trigger
+        window.addEventListener('load', () => {
+            document.querySelector('.text-reveal').classList.add('active');
+        });
+
+        // Scroll Logic
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add('glass-nav');
+            if (window.scrollY > 100) {
+                navbar.classList.add('nav-blur');
+                navbar.classList.replace('py-10', 'py-6');
                 logoText.classList.replace('text-white', 'text-black');
-                logoCircle.classList.replace('border-white', 'border-black');
-                logoDot.classList.replace('bg-white', 'bg-black');
-                navLinks.classList.replace('text-white', 'text-gray-700');
-                ctaBtn.classList.replace('border-white', 'border-black');
-                ctaBtn.classList.replace('text-white', 'text-black');
-                ctaBtn.classList.add('bg-black', 'text-white');
+                logoSub.classList.replace('text-white/50', 'text-black/30');
+                navLinks.classList.replace('text-white', 'text-black');
                 menuToggle.classList.replace('text-white', 'text-black');
             } else {
-                navbar.classList.remove('glass-nav');
+                navbar.classList.remove('nav-blur');
+                navbar.classList.replace('py-6', 'py-10');
                 logoText.classList.replace('text-black', 'text-white');
-                logoCircle.classList.replace('border-black', 'border-white');
-                logoDot.classList.replace('bg-black', 'bg-white');
-                navLinks.classList.replace('text-gray-700', 'text-white');
-                ctaBtn.classList.replace('border-black', 'border-white');
-                ctaBtn.classList.remove('bg-black', 'text-white');
-                ctaBtn.classList.add('text-white');
+                logoSub.classList.replace('text-black/30', 'text-white/50');
+                navLinks.classList.replace('text-black', 'text-white');
                 menuToggle.classList.replace('text-black', 'text-white');
             }
         });
 
-        // Mobile menu logic
+        // Menu Logic
         const mobileMenu = document.getElementById('mobile-menu');
-        const menuOpenBtn = document.getElementById('menu-toggle');
-        const menuCloseBtn = document.getElementById('menu-close');
+        const menuClose = document.getElementById('menu-close');
 
-        menuOpenBtn.addEventListener('click', () => {
+        menuToggle.addEventListener('click', () => {
             mobileMenu.classList.remove('hidden');
             mobileMenu.classList.add('flex');
             document.body.style.overflow = 'hidden';
         });
 
-        menuCloseBtn.addEventListener('click', () => {
+        menuClose.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('flex');
             document.body.style.overflow = 'auto';
         });
     </script>
