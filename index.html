@@ -52,6 +52,7 @@
             width: 100%;
             font-weight: 600;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         .btn-magenta:hover {
             background-color: var(--gsg-black);
@@ -94,14 +95,14 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex flex-col">
                 <h1 class="oswald text-2xl md:text-3xl font-bold tracking-tighter leading-none">GABRIELLE BASULTO</h1>
-                <span class="text-[10px] uppercase tracking-[0.4em] text-[var(--gsg-magenta)] font-bold">GardenStateGab Collective</span>
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[var(--gsg-magenta)] font-bold">GardenStateGab</span>
             </div>
             
             <nav class="hidden lg:flex gap-10 items-center">
                 <a href="#about" class="oswald text-xs tracking-widest hover:text-[var(--gsg-magenta)] transition-colors">THE AGENT</a>
                 <a href="#form" class="oswald text-xs tracking-widest hover:text-[var(--gsg-magenta)] transition-colors">SELLERS</a>
                 <a href="#form" class="oswald text-xs tracking-widest hover:text-[var(--gsg-magenta)] transition-colors">BUYERS</a>
-                <a href="tel:9732062128" class="bg-[var(--gsg-magenta)] px-6 py-2 oswald text-xs font-bold tracking-widest hover:bg-white hover:text-black transition-all">973.206.2128</a>
+                <a href="tel:9082300912" class="bg-[var(--gsg-magenta)] px-6 py-2 oswald text-xs font-bold tracking-widest hover:bg-white hover:text-black transition-all">908.230.0912</a>
             </nav>
         </div>
     </header>
@@ -126,16 +127,16 @@
                 <!-- Agent Stat Row -->
                 <div class="flex gap-12 border-t-2 border-black pt-8">
                     <div>
+                        <p class="oswald text-3xl font-bold uppercase">$37.6M+</p>
+                        <p class="text-[10px] uppercase tracking-widest font-bold text-gray-400">Sales Volume</p>
+                    </div>
+                    <div>
+                        <p class="oswald text-3xl font-bold uppercase">9 YRS</p>
+                        <p class="text-[10px] uppercase tracking-widest font-bold text-gray-400">Industry Expert</p>
+                    </div>
+                    <div>
                         <p class="oswald text-3xl font-bold uppercase">5.0</p>
                         <p class="text-[10px] uppercase tracking-widest font-bold text-gray-400">Zillow Rating</p>
-                    </div>
-                    <div>
-                        <p class="oswald text-3xl font-bold uppercase">2026</p>
-                        <p class="text-[10px] uppercase tracking-widest font-bold text-gray-400">Collection</p>
-                    </div>
-                    <div>
-                        <p class="oswald text-3xl font-bold uppercase">NJ</p>
-                        <p class="text-[10px] uppercase tracking-widest font-bold text-gray-400">Market Leader</p>
                     </div>
                 </div>
             </div>
@@ -147,12 +148,12 @@
                         SECURE PORTAL
                     </div>
                     <h3 class="oswald text-3xl font-bold mb-8 uppercase tracking-tight">Client Registration</h3>
-                    <form onsubmit="event.preventDefault();" class="space-y-2">
+                    <form id="leadForm" class="space-y-2">
                         <label class="text-[10px] uppercase tracking-widest font-bold text-gray-500">Full Name</label>
-                        <input type="text" class="lead-input !border-white text-white focus:!border-[var(--gsg-magenta)]" placeholder="REQUIRED" required>
+                        <input type="text" name="name" class="lead-input !border-white text-white focus:!border-[var(--gsg-magenta)]" placeholder="REQUIRED" required>
                         
                         <label class="text-[10px] uppercase tracking-widest font-bold text-gray-500">Phone Number</label>
-                        <input type="tel" class="lead-input !border-white text-white focus:!border-[var(--gsg-magenta)]" placeholder="REQUIRED" required>
+                        <input type="tel" name="phone" class="lead-input !border-white text-white focus:!border-[var(--gsg-magenta)]" placeholder="REQUIRED" required>
                         
                         <div class="py-6">
                             <label class="flex items-start gap-4 cursor-pointer group">
@@ -165,16 +166,19 @@
                         
                         <button type="submit" class="btn-magenta">Register & Consult</button>
                     </form>
+                    <div id="formStatus" class="hidden mt-4 p-4 text-center oswald text-xs tracking-widest bg-white/10 text-[var(--gsg-magenta)] uppercase font-bold">
+                        Message Sent Successfully.
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Property Visual Divider (Updated with skyline.webp) -->
+    <!-- Property Visual Divider -->
     <section class="px-6 md:px-12 pb-24">
         <div class="max-w-7xl mx-auto relative">
             <div class="aspect-[21/9] overflow-hidden border-2 border-black group">
-                <img src="skyline.webp" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="New Jersey Skyline Portfolio">
+                <img src="skyline.webp" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="New Jersey Skyline">
                 <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all"></div>
                 <div class="absolute bottom-10 left-10 text-white">
                     <p class="oswald text-4xl font-bold tracking-tighter">FEATURED ARCHIVE</p>
@@ -184,44 +188,51 @@
         </div>
     </section>
 
-    <!-- Portfolio / Social Proof -->
+    <!-- Portfolio / About Section -->
     <section id="about" class="bg-gray-50 py-24 px-6 md:px-12">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
             
-            <div class="order-2 lg:order-1 relative">
+            <div class="relative sticky lg:top-32">
                 <div class="agent-image-container relative">
-                    <img src="390500e4c44ccfe67ee0f5a1fcfd1f02-cc_ft_1536.webp" class="w-full aspect-square object-cover border-2 border-black grayscale" alt="Featured NJ Listing">
+                    <img src="390500e4c44ccfe67ee0f5a1fcfd1f02-cc_ft_1536.webp" class="w-full aspect-square object-cover border-2 border-black grayscale hover:grayscale-0 transition-all duration-700" alt="Gabrielle Basulto Agent Portrait">
                 </div>
-                <div class="absolute -bottom-8 -right-8 bg-black text-white p-10 max-w-xs">
-                    <p class="serif italic text-3xl mb-4 text-[var(--gsg-magenta)]">"Unmatched focus on the Gold Coast."</p>
+                <div class="absolute -bottom-8 -right-8 bg-black text-white p-10 max-w-xs hidden md:block">
+                    <p class="serif italic text-2xl mb-4 text-[var(--gsg-magenta)] leading-tight">"Determined. Motivated. Client-focused."</p>
+                    <p class="text-[11px] uppercase tracking-[0.2em] font-bold text-gray-400 mb-4 italic">"Living on the parkway....so you don't have to."</p>
                     <div class="flex text-[var(--gsg-magenta)] text-sm mb-2">★★★★★</div>
-                    <p class="oswald text-xs tracking-widest uppercase">Verified Zillow Partner</p>
+                    <p class="oswald text-xs tracking-widest uppercase">GardenStateGab</p>
                 </div>
             </div>
 
-            <div class="order-1 lg:order-2">
+            <div>
                 <h3 class="oswald text-4xl font-bold mb-8 uppercase tracking-tighter">The Agent <span class="text-gray-300">Behind the Brand.</span></h3>
-                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Gabrielle Basulto isn't just selling homes; she's brokering lifestyles. With an intimate knowledge of New Jersey's most prestigious zip codes and a marketing machine built for the digital age, Gabrielle ensures every client receives the "Noir" treatment—exclusive, sophisticated, and results-oriented.
-                </p>
-                <div class="space-y-6">
-                    <div class="flex items-center gap-6 group cursor-pointer border-b border-gray-200 pb-4">
-                        <span class="oswald text-[var(--gsg-magenta)] font-bold text-xl">01.</span>
-                        <span class="oswald text-sm font-bold tracking-[0.2em] uppercase group-hover:translate-x-2 transition-transform">Aggressive Digital Marketing</span>
-                    </div>
-                    <div class="flex items-center gap-6 group cursor-pointer border-b border-gray-200 pb-4">
-                        <span class="oswald text-[var(--gsg-magenta)] font-bold text-xl">02.</span>
-                        <span class="oswald text-sm font-bold tracking-[0.2em] uppercase group-hover:translate-x-2 transition-transform">Premier Zillow Exposure</span>
-                    </div>
-                    <div class="flex items-center gap-6 group cursor-pointer border-b border-gray-200 pb-4">
-                        <span class="oswald text-[var(--gsg-magenta)] font-bold text-xl">03.</span>
-                        <span class="oswald text-sm font-bold tracking-[0.2em] uppercase group-hover:translate-x-2 transition-transform">Concierge Service Model</span>
-                    </div>
+                <div class="text-base text-gray-700 space-y-6 leading-relaxed font-light">
+                    <p>
+                        <strong>Gabrielle Basulto</strong> — better known as <strong>GardenstateGab</strong> — is a dedicated and driven New Jersey Realtor specializing in areas from Essex County all the way down to Ocean County. With 9 years in the industry and over <strong>$37,697,701</strong> in total sales volume, Gabrielle has built her business on results, relationships, and reputation. Known for her unmatched client service, 24/7 availability, and strong negotiation skills, she doesn’t rest until the job is done. Her clients don’t just close on homes — they become family.
+                    </p>
+                    <p>
+                        Her mission is simple: to make every real estate experience — whether it’s your first, second, or third home — smooth, exciting, and seamless. She believes it is her duty not only to represent her clients to the best of her ability, but also to educate them along the way, empowering them to make confident and informed decisions.
+                    </p>
+                    <p>
+                        Gabrielle genuinely cares about her clients. To her, every transaction tells a story, and every client becomes a lifelong friend.
+                    </p>
+                    <p>
+                        Owning a summer home in Seaside Park, Gabrielle has managed her family’s three-family property for the past seven years. Meeting new guests weekly and showing them around town energizes her — hospitality and service come naturally.
+                    </p>
+                    <p>
+                        Before real estate, Gabrielle worked as a Production Coordinator in NYC for major networks including <strong>MTV, Food Network, VH1, and CMT.</strong> Her favorite part of that career was building relationships and ensuring every project ran flawlessly from start to finish — a skill she seamlessly brings into every real estate transaction today.
+                    </p>
                 </div>
-                <div class="mt-12">
-                    <a href="https://www.zillow.com/profile/gabriellebasulto" target="_blank" class="oswald text-sm font-bold uppercase tracking-widest border-b-2 border-black pb-2 hover:text-[var(--gsg-magenta)] hover:border-[var(--gsg-magenta)] transition-all">
-                        View Complete Zillow Portfolio & Reviews →
-                    </a>
+                
+                <div class="mt-12 flex flex-col sm:flex-row gap-8">
+                    <div class="flex-1 border-l-2 border-[var(--gsg-magenta)] pl-6">
+                        <p class="oswald text-xs tracking-[0.2em] font-bold text-gray-400 mb-2 uppercase">Direct Contact</p>
+                        <a href="tel:9082300912" class="oswald text-2xl font-bold hover:text-[var(--gsg-magenta)] transition-colors">908.230.0912</a>
+                    </div>
+                    <div class="flex-1 border-l-2 border-[var(--gsg-magenta)] pl-6">
+                        <p class="oswald text-xs tracking-[0.2em] font-bold text-gray-400 mb-2 uppercase">Official Profile</p>
+                        <a href="https://www.zillow.com/profile/gabriellebasulto" target="_blank" class="oswald text-2xl font-bold hover:text-[var(--gsg-magenta)] transition-colors">ZILLOW GURU</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -235,14 +246,14 @@
                     <h4 class="oswald text-4xl font-bold tracking-tighter mb-6">GABRIELLE <br> BASULTO</h4>
                     <p class="text-xs text-gray-500 uppercase tracking-widest font-bold max-w-xs leading-loose">
                         A licensed real estate professional dedicated to the Garden State. <br>
-                        NJ // 2026 Noir Collective.
+                        NJ // 2026 Noir Agency.
                     </p>
                 </div>
                 <div>
                     <h5 class="oswald text-sm font-bold mb-6 text-[var(--gsg-magenta)] uppercase tracking-widest">Connect</h5>
                     <ul class="text-xs uppercase tracking-widest font-bold space-y-4">
-                        <li><a href="tel:9732062128" class="hover:text-[var(--gsg-magenta)] transition-colors">973.206.2128</a></li>
-                        <li><a href="mailto:gabrielle@gardenstategab.com" class="hover:text-[var(--gsg-magenta)] transition-colors">Direct Email</a></li>
+                        <li><a href="tel:9082300912" class="hover:text-[var(--gsg-magenta)] transition-colors">908.230.0912</a></li>
+                        <li><a href="mailto:GabrielleBasulto@gmail.com" class="hover:text-[var(--gsg-magenta)] transition-colors">EMAIL</a></li>
                         <li><a href="https://www.zillow.com/profile/gabriellebasulto" class="hover:text-[var(--gsg-magenta)] transition-colors">Zillow Profile</a></li>
                     </ul>
                 </div>
@@ -251,13 +262,13 @@
                     <ul class="text-xs uppercase tracking-widest font-bold space-y-4">
                         <li><a href="#form" class="hover:text-[var(--gsg-magenta)] transition-colors">Register Home</a></li>
                         <li><a href="#form" class="hover:text-[var(--gsg-magenta)] transition-colors">Buying Consultation</a></li>
-                        <li><button onclick="togglePrivacy()" class="hover:text-[var(--gsg-magenta)] transition-colors">Privacy Policy</button></li>
+                        <li><button onclick="togglePrivacy()" class="hover:text-[var(--gsg-magenta)] transition-colors text-left">Privacy Policy</button></li>
                     </ul>
                 </div>
             </div>
 
             <div class="border-t border-gray-900 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
-                <p class="text-[9px] font-bold text-gray-600 uppercase tracking-[0.4em]">© 2026 GARDENSTATEGAB COLLECTIVE // ALL RIGHTS RESERVED</p>
+                <p class="text-[9px] font-bold text-gray-600 uppercase tracking-[0.4em]">© 2026 GARDENSTATEGAB // ALL RIGHTS RESERVED</p>
                 <p class="text-[9px] font-bold text-gray-600 uppercase tracking-[0.4em]">
                     STYLIZED BY <a href="https://ladmedia.co" target="_blank" class="text-white hover:text-[var(--gsg-magenta)] underline decoration-[var(--gsg-magenta)] decoration-2">LAD MEDIA</a>
                 </p>
@@ -271,7 +282,7 @@
             <h3 class="oswald text-4xl font-bold mb-8 uppercase tracking-tighter">DATA PRIVACY & CONSENT</h3>
             <div class="text-xs text-black space-y-6 leading-relaxed uppercase tracking-widest font-bold">
                 <p><span class="text-[var(--gsg-magenta)]">■</span> <strong>Encryption:</strong> Your personal data (Name/Phone) is stored securely and only accessible by Gabrielle Basulto.</p>
-                <p><span class="text-[var(--gsg-magenta)]">■</span> <strong>Non-Disclosure:</strong> GardenStateGab Collective guarantees your information is never sold to third-party data firms or brokers.</p>
+                <p><span class="text-[var(--gsg-magenta)]">■</span> <strong>Non-Disclosure:</strong> GardenStateGab guarantees your information is never sold to third-party data firms or brokers.</p>
                 <p><span class="text-[var(--gsg-magenta)]">■</span> <strong>Marketing Authorization:</strong> Submission of this form constitutes permission to receive marketing communications, property alerts, and professional consultations via telephone and SMS from Gabrielle Basulto.</p>
             </div>
             <button onclick="togglePrivacy()" class="mt-12 bg-black text-white oswald px-12 py-5 tracking-widest w-full hover:bg-[var(--gsg-magenta)] transition-all">DISMISS TERMS</button>
@@ -291,6 +302,29 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Form Submission Logic
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.name.value;
+            const phone = this.phone.value;
+            const statusBox = document.getElementById('formStatus');
+            
+            // Construct the mailto link
+            const subject = `New Lead: ${name} (GardenStateGab Portal)`;
+            const body = `You have received a new registration:\n\nName: ${name}\nPhone: ${phone}\n\nPlease contact this lead as soon as possible.`;
+            
+            // Open user's email client
+            window.location.href = `mailto:GabrielleBasulto@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Show success UI
+            statusBox.classList.remove('hidden');
+            this.reset();
+            
+            setTimeout(() => {
+                statusBox.classList.add('hidden');
+            }, 5000);
         });
     </script>
 </body>
